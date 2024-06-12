@@ -17,21 +17,21 @@ axios.interceptors.response.use(async response => {
     return response;
 
 }, (error: AxiosError) => {
-    const {data, status, config} = error.response as AxiosResponse;
-    switch(status){
+    const { data, status, config } = error.response as AxiosResponse;
+    switch (status) {
         case 400:
-            if(config.method == 'get' && data.errors.hasOwnProperty('id')){
+            if (config.method === 'get' && data.errors.hasOwnProperty('id')) {
                 router.navigate('/not-found')
             }
-            if(data.errors){
+            if (data.errors) {
                 const modalStateErrors = [];
-                for(const key in data.errors){
-                    if(data.errors[key]){
+                for (const key in data.errors) {
+                    if (data.errors[key]) {
                         modalStateErrors.push(data.errors[key])
                     }
                 }
                 throw modalStateErrors.flat();
-            }else{
+            } else {
                 toast.error(data);
             }
             break;
@@ -46,7 +46,6 @@ axios.interceptors.response.use(async response => {
             break;
         case 500:
             store.commonStore.setServerError(error.response);
-            console.log(error);
             router.navigate('/server-error')
             break;
     }
