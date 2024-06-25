@@ -26,7 +26,7 @@ export default class ProfileStore {
             const profile = await agent.Profiles.get(username);
             runInAction(() => {
                 this.profile = profile;
-                this.loadingProfile = false;                
+                this.loadingProfile = false;
             })
         } catch (error) {
             console.log(error);
@@ -81,7 +81,7 @@ export default class ProfileStore {
             await agent.Profiles.deletePhoto(photo.id);
             runInAction(() => {
                 if (this.profile) {
-                    this.profile.photos = this.profile.photos?.filter(p=> p.id !== photo.id);
+                    this.profile.photos = this.profile.photos?.filter(p => p.id !== photo.id);
                     this.loading = false;
                 }
             })
@@ -90,6 +90,26 @@ export default class ProfileStore {
             console.log(error);
             runInAction(() => this.loading = false);
 
+        }
+    }
+
+    updateProfile = async (profile: Partial<Profile>) => {
+        this.loading = true;
+        try {
+            await agent.Profiles.updateProfile(profile);
+            runInAction(() => {
+                if (profile.displayName && profile.displayName !==
+                    store.userStore.user?.displayName) {
+                        store.userStore.setDisplayName(profile.displayName);
+                }
+                this.profile = {...this.profile, ...profile as Profile};
+                this.loading = false;
+            })
+        } catch (error) {
+            console.log(error);
+            runInAction(() => {
+                this.loading = false;
+            })
         }
     }
 }

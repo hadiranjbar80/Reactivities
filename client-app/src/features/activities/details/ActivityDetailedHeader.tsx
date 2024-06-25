@@ -53,7 +53,10 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
             </Segment>
             <Segment clearing attached='bottom'>
                 {activity.isHost ? (
+                    
                     <>
+                    {console.log(activity.isHost)}
+                    
                         <Button color={activity.isCancelled ? 'green' : 'red'}
                             floated='left'
                             basic
