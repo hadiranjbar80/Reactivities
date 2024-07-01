@@ -7,7 +7,6 @@ interface Props{
 }
 
 export default observer(function ProfileHeader({profile}: Props) {
-    
     return (
         <Segment>
             <Grid>
