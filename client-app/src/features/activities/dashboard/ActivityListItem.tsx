@@ -18,7 +18,7 @@ export default function ActivityListItem({ activity }: Props) {
                 }
                 <Item.Group>
                     <Item>
-                        <Item.Image size="tiny" circular src={`http://localhost:5000/upload/photos/${activity.host?.image}` || '/assets/user.png'} />
+                        <Item.Image size="tiny" circular src={process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${activity.host?.image}` || '/assets/user.png'} />
                     </Item>
                     <Item.Content>
                         <Item.Header as={Link} to={`/activities/${activity.id}`}>

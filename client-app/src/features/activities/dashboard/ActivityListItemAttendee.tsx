@@ -21,7 +21,7 @@ export default observer(function ActivityListItemAttendee({ attendees }: Props) 
                             <Image
                                 size="mini"
                                 circular
-                                src={`http://localhost:5000/upload/photos/${attendee.image}` || '/assets/user.png'}
+                                src={process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${attendee.image}` || '/assets/user.png'}
                                 style={attendee.following ? styles : null}
                             />
                         </List.Item>

@@ -40,7 +40,7 @@ namespace Application.Photos
                     var photoName = $"{photoId}.{fileExtension}";
                     
 
-                    string photoPath = Path.Combine(Directory.GetCurrentDirectory(), "Upload", "Photos", photoName);
+                    string photoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Upload", "Photos", photoName);
 
                     using (var stream = new FileStream(photoPath, FileMode.Create))
                     {

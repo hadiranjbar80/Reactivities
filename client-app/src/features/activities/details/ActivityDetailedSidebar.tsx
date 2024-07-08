@@ -36,7 +36,7 @@ export default observer(function ActivityDetailedSidebar({ activity: { attendees
                                     Host
                                 </Label>
                             }
-                            <Image size='tiny' src={`http://localhost:5000/upload/photos/${attendee.image}` || '/assets/user.png'} />
+                            <Image size='tiny' src={process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${attendee.image}` || '/assets/user.png'} />
                             <Item.Content verticalAlign='middle'>
                                 <Item.Header as='h3'>
                                     <Link to={`/profiles/${attendee.username}`}>{attendee.displayName}</Link>

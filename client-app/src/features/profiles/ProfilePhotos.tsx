@@ -51,7 +51,7 @@ export default observer(function ProfilePhotos({ profile }: Props) {
                         <Card.Group>
                             {profile.photos?.map(photo => (
                                 <Card key={photo.photoName}>
-                                    <Image src={`http://localhost:5000/upload/photos/${photo.photoName}`} />
+                                    <Image src={ process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${photo.photoName}`} />
                                     {isCurrentUser && (
                                         <Button.Group fluid widths={2}>
                                             <Button

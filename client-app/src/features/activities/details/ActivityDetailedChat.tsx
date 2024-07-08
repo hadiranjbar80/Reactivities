@@ -73,7 +73,7 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
         <Comment.Group>
           {commentStore.comments.map(comment => (
             <Comment key={comment.id}>
-              <Comment.Avatar src={`http://localhost:5000/upload/photos/${comment.image}`} />
+              <Comment.Avatar src={process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${comment.image}`} />
               <Comment.Content>
                 <Comment.Author as={Link} to={`/profiles/${comment.username}`}>{comment.displayName}</Comment.Author>
                 <Comment.Metadata>
