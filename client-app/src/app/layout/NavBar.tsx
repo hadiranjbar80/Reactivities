@@ -18,7 +18,7 @@ export default observer(function NavBar() {
           <Button as={NavLink} to='/createActivity' positive content='Create Activity' />
         </Menu.Item>
         <Menu.Item position="right">
-          <Image src={process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${user?.image}` || '/assets/user.png'} avatar spaced='right' />
+          <Image src={user?.image ? process.env.REACT_APP_API_IMAGE_URL + `upload/photos/${user?.image}` : '/assets/user.png'} avatar spaced='right' />
           <Dropdown pointing='top left' text={user?.displayName}>
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to={`/profiles/${user?.username}`} text='My Profile' icon='user' />
